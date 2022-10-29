@@ -5,6 +5,7 @@ jobs:
   create-update:
     docker:
       - image: 'cimg/base:stable'
+    resource_class: sagar-7227/deployment
     steps:
       - checkout
       - kubernetes/install

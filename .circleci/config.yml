@@ -5,17 +5,15 @@ jobs:
   create-update:
     docker:
       - image: 'cimg/base:stable'
-    resource_class: sagar-7227/deployment
+    
     steps:
       - checkout
       - kubernetes/install
       - kubernetes/install-kubeconfig:
           kubeconfig: KUBECONFIG_DATA
-      - kubernetes/create-or-update-resource:
-          get-rollout-status: true
-          resource-file-path: tests/nginx-deployment/deployment.yaml
-          resource-name: deployment/nginx-deployment
-          show-kubectl-command: true
+      - run:
+          command: |
+            kubectl get services
 workflows:
   build-workflow:
     jobs:

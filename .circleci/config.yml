@@ -35,8 +35,10 @@ jobs:
           name: Login to DockerHub
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
 
-      # build and push docker image to docker hub
-      - run: mvn clean compile jib:build -Dimage=docker72427/springboot-ci-cd:$CIRCLE_BUILD_NUM            
+      # push docker image to docker hub
+      - run:
+          name: Docker Build
+          command: docker build -t springboot-ci-cd:$CIRCLE_BUILD_NUM .            
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

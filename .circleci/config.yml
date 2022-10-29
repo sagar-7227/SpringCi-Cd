@@ -22,7 +22,7 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
           docker_layer_caching: true
-          
+
       # Use mvn clean and package as the standard maven build phase
       - run:
           name: Build
@@ -43,7 +43,11 @@ jobs:
       # push docker image to docker hub
       - run:
           name: Docker Build
-          command: docker build -t springboot-ci-cd:$CIRCLE_BUILD_NUM .            
+          command: docker build -t springboot-ci-cd:$CIRCLE_BUILD_NUM .
+
+      - run:
+          name: Docker Push to DockerHub
+          command: docker push springboot-ci-cd:$CIRCLE_BUILD_NUM .                
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

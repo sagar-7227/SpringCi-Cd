@@ -8,7 +8,11 @@ jobs:
     steps:
       - checkout
       - kubernetes/install-kubectl
-      
+
+      - run:
+          name: Check Version
+          command: kubectl version
+
 workflows:
   build-workflow:
     jobs:

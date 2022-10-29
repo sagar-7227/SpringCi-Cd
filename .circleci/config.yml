@@ -11,7 +11,7 @@ jobs:
 
       - run:
           name: Check Version
-          command: kubectl version
+          command: kubectl version --output=yaml|json
 
 workflows:
   build-workflow:

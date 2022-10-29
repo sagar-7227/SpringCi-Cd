@@ -7,7 +7,9 @@ jobs:
       - image: 'cimg/base:stable'
     steps:
       - checkout
-      - kubernetes/install-kubectl
+      - kubernetes/install
+      - kubernetes/install-kubeconfig:
+          kubeconfig: KUBECONFIG_DATA
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
           resource-file-path: tests/nginx-deployment/deployment.yaml

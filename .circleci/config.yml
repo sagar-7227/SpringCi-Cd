@@ -8,11 +8,11 @@ jobs:
     steps:
       - checkout
       - kubernetes/install-kubectl
-
-      - run:
-          name: Check Version
-          command: kubectl version --output=yaml|json
-
+      - kubernetes/create-or-update-resource:
+          get-rollout-status: true
+          resource-file-path: tests/nginx-deployment/deployment.yaml
+          resource-name: deployment/nginx-deployment
+          show-kubectl-command: true
 workflows:
   build-workflow:
     jobs:

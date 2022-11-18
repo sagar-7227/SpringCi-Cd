@@ -43,7 +43,7 @@ jobs:
       # build using docker hub
       - run:
           name: Docker Build
-          command: docker build -t docker72427/springboot-ci-cd .
+          command: docker build -t docker72427/springboot-ci-cd:$CIRCLE_BUILD_NUM .
       # push to docker hub
       - run:
           name: Docker Push to Hub

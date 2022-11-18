@@ -18,7 +18,7 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
-      
+    
       - setup_remote_docker:
           version: 20.10.14
           docker_layer_caching: true
@@ -43,7 +43,7 @@ jobs:
       # build using docker hub
       - run:
           name: Docker Build
-          command: docker build -t docker72427/springboot-ci-cd:$CIRCLE_BUILD_NUM .
+          command: docker build -t docker72427/springboot-ci-cd .
       # push to docker hub
       - run:
           name: Docker Push to Hub

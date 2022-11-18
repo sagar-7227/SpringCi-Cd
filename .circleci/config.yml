@@ -43,7 +43,7 @@ jobs:
       # build using docker hub
       - run:
           name: Docker Build
-          command: docker build -t springboot-ci-cd:$CIRCLE_BUILD_NUM .
+          command: docker build -t docker72427/springboot-ci-cd .
       # push to docker hub
       - run:
           name: Docker Push to Hub
@@ -51,7 +51,7 @@ jobs:
       # running the docker image
       - run:
           name: Docker Image run
-          command: docker run -d --name spring-boot docker72427/springboot-ci-cd:$CIRCLE_BUILD_NUM            
+          command: docker run -d --name spring-boot-app docker72427/springboot-ci-cd:$CIRCLE_BUILD_NUM            
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
